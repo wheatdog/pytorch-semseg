@@ -1,12 +1,12 @@
 {
   "pascal":
   {
-    "data_path": "/home/gpu_users/meetshah/segdata/pascal/VOCdevkit/VOC2012/"
+    "data_path": "/home/ytliou/data/VOCdevkit/VOC2012/"
   },
 
   "sbd":
   {
-    "data_path": "/home/gpu_users/meetshah/segdata/pascal/benchmark_RELEASE/"
+    "data_path": "/home/ytliou/data/benchmark/benchmark_RELEASE/"
   },
 
   "camvid":
