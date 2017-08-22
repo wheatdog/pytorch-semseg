@@ -1,6 +1,6 @@
 import torch.nn as nn
 
-from utils import *
+from .utils import *
 
 class pspnet(nn.Module):
 
