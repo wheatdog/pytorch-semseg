@@ -17,7 +17,7 @@ def get_data_path(name):
     return data[name]['data_path']
 
 class pascalVOCLoader(data.Dataset):
-    def __init__(self, root, split="train_aug", is_transform=False, img_size=512):
+    def __init__(self, root, split="sbd", is_transform=False, img_size=512):
         self.root = root
         self.split = split
         self.is_transform = is_transform
@@ -124,10 +124,15 @@ class pascalVOCLoader(data.Dataset):
         sbd_train_list = tuple(open(sbd_path + 'dataset/train.txt', 'r'))
         sbd_train_list = [id_.rstrip() for id_ in sbd_train_list]
         
+        fcn_valid_list = tuple(open(sbd_path + 'dataset/seg11valid.txt', 'r'))
+        fcn_valid_list = [id_.rstrip() for id_ in sbd_train_list]
+
         self.files['train_aug'] = self.files['train'] + sbd_train_list
+        self.files['sbd'] = sbd_train_list
+        self.files['fcn_valid'] = fcn_valid_list
 
         if pre_encode:
-            print "Pre-encoding segmentation masks..."
+            print ("Pre-encoding segmentation masks...")
             for i in tqdm(sbd_train_list):
                 lbl_path = sbd_path + 'dataset/cls/' + i + '.mat'
                 lbl = io.loadmat(lbl_path)['GTcls'][0]['Segmentation'][0].astype(np.int32)
